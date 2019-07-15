@@ -85,3 +85,7 @@ ro.sys.sdcardfs=true
 PRODUCT_PROPERTY_OVERRIDES += \
 wifi.interface=wlan0 \
 net.tethering.noprovisioning=true
+
+# Charger
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.charger.enable_suspend=true
