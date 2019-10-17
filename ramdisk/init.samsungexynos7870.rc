@@ -412,8 +412,7 @@ service argos-daemon /system/bin/argosd
     user system
     group system radio
 	
-# LPM
-service charger /charger
+service charger /system/bin/charger
     class charger
     critical
     seclabel u:r:charger:s0
