@@ -10,7 +10,3 @@ PRODUCT_MODEL := SM-T585
 PRODUCT_NAME := omni_gtaxllte
 PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
-
-PRODUCT_COPY_FILES += \
-    device/samsung/gtaxllte/Image:kernel \
-    device/samsung/gtaxllte/dtb.img:dt.img
