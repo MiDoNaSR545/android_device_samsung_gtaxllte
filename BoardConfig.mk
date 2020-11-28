@@ -16,7 +16,6 @@
 
 LOCAL_PATH := device/samsung/gtaxllte
 
-# temporary
 BUILD_BROKEN_DUP_RULES := true
 
 # Include path
@@ -213,7 +212,6 @@ TARGET_NEEDS_NETD_DIRECT_CONNECT_RULE := true
 
 # HIDL
 DEVICE_MANIFEST_FILE := $(LOCAL_PATH)/manifest.xml
-DEVICE_MATRIX_FILE := $(LOCAL_PATH)/compatibility_matrix.xml
 
 # Release tools
 TARGET_RELEASETOOLS_EXTENSIONS := $(LOCAL_PATH)
