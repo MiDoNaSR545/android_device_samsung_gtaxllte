@@ -25,8 +25,6 @@ dalvik.vm.heapmaxfree=8m
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
 ro.opengles.version=196610 \
-debug.hwc.skip_dma_types=0,2 \
-debug.hwc.force_gpu=1 \
 debug.sf.enable_hwc_vds=1 \
 debug.sf.latch_unsignaled=1 \
 debug.sf.disable_backpressure=1

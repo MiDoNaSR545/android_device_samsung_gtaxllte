@@ -94,6 +94,27 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.sip.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/handheld_core_hardware.xml
 
+# BSP
+PRODUCT_PACKAGES += \
+    hwcomposer.exynos5 \
+    gralloc.exynos5 \
+    memtrack.exynos5 \
+    libcsc \
+    libexynosdisplay \
+    libexynosgscaler \
+    libExynosHWCService \
+    libexynosscaler \
+    libexynosutils \
+    libexynosv4l2 \
+    libfimg \
+    libhdmi \
+    libhwcutils \
+    libhwjpeg \
+    libion_exynos \
+    libmpp \
+    libstagefrighthw
+
+# Graphics
 PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-impl \
     android.hardware.graphics.allocator@2.0-service \
@@ -108,8 +129,7 @@ PRODUCT_PACKAGES += \
     libtinyxml
 
 PRODUCT_PACKAGES += \
-    libion \
-    libfimg
+    libion
 
 # seccomp_policy
 PRODUCT_COPY_FILES += \
@@ -144,10 +164,6 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl.exynos7870 \
     android.hardware.camera.provider@2.4-service \
     camera.universal7870
-
-PRODUCT_PACKAGES += \
-    libhwjpeg \
-    libion_exynos
 
 PRODUCT_PACKAGES += \
     libexynoscamera_shim
@@ -330,12 +346,10 @@ PRODUCT_PACKAGES += \
     charger_res_images \
     lineage_charger_res_images
 
-# call Samsung LSI board support package
-#INCLUDE_EXYNOS_BSP := true
-ifneq ($(INCLUDE_EXYNOS_BSP),)
-$(call inherit-product, hardware/samsung_slsi/exynos5/exynos5.mk)
-$(call inherit-product, hardware/samsung_slsi/exynos7870/exynos7870.mk)
-endif
+# Call empty .mk files in the BSP sources as an existence check for them
+$(call inherit-product, hardware/samsung_slsi/exynos/empty.mk)
+$(call inherit-product, hardware/samsung_slsi/exynos5/empty.mk)
+$(call inherit-product, hardware/samsung_slsi/exynos7870/empty.mk)
 
 # call the proprietary setup
 $(call inherit-product, vendor/samsung/gtaxllte/gtaxllte-vendor.mk)

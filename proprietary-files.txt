@@ -78,7 +78,6 @@ lib/egl/libGLES_android.so
 lib/hw/audio.primary.universal7870.so
 lib/hw/camera.universal7870.so
 lib/hw/gps.default.so
-lib/hw/gralloc.exynos5.so
 lib/hw/sensors.universal7870.so
 lib/lib_DNSe_NRSS_ver226.so
 lib/lib_SamsungRec_V05001.so
