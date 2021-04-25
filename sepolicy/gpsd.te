@@ -3,17 +3,10 @@ type gpsd_exec, exec_type, file_type;
 
 init_daemon_domain(gpsd)
 
-type gps_data_file, file_type, sysfs_type, core_data_file_type, data_file_type;
+type gps_data_file, file_type, core_data_file_type, data_file_type;
 file_type_auto_trans(gpsd, system_data_file, gps_data_file);
 
-allow gpsd gps_data_file:dir { search write add_name remove_name };
-allow gpsd gps_data_file:file { create rw_file_perms };
-allow gpsd gps_data_file:fifo_file { unlink create setattr getattr rw_file_perms };
-allow gps_data_file sysfs:filesystem associate;
-
-allow gpsd gps_device:chr_file { getattr setattr rw_file_perms };
-allow gpsd sysfs:file { getattr read open };
-allow gpsd sysfs_wake_lock:file { write open };
+unix_socket_connect(gpsd, property, netd)
 
 allow gpsd dnsproxyd_socket:sock_file write;
 allow gpsd mif_device:chr_file { read open ioctl };
@@ -28,12 +21,34 @@ allow gpsd sysfs_wake_lock:file read;
 allow gpsd port:tcp_socket { name_connect name_bind node_bind };
 allow gpsd gpsd:tcp_socket { create connect getopt bind write read };
 allow gpsd vendor_file:file entrypoint;
+
+binder_call(gpsd, system_server)
+binder_call(gpsd, system_suspend_server)
+hwbinder_use(gpsd)
+
+allow gpsd system_suspend_hwservice:hwservice_manager find;
+
+allow gpsd dnsproxyd_socket:sock_file write;
+allow gpsd fwmarkd_socket:sock_file write;
+
+allow gpsd sysfs:file { getattr read open write };
+allow gpsd sysfs_wake_lock:file { open read write };
+
+allow gpsd gps_device:chr_file { setattr rw_file_perms };
+allow gpsd gps_data_file:dir { search write add_name remove_name };
+allow gpsd gps_data_file:file { create rw_file_perms };
+allow gpsd gps_data_file:fifo_file create_file_perms;
+
+allow gpsd port:tcp_socket { name_connect name_bind };
+allow gpsd node:tcp_socket node_bind;
+allow gpsd self:tcp_socket create_socket_perms;
+allow gpsd self:udp_socket create_socket_perms;
+
 allow gpsd hwservicemanager_prop:file { getattr open read };
-allow gpsd hwservicemanager_prop:binder call;
-allow gpsd hwservicemanager:binder call;
 allow gpsd bluetooth_device:chr_file { getattr open read write ioctl };
 allow gpsd node:tcp_socket node_bind;
 allow gpsd debugfs_tracing_debug:file { open write };
 allow gpsd sysfs:file write;
-allow gpsd system_file:dir { open read };
+
+allow gpsd vendor_file:file entrypoint;
 
