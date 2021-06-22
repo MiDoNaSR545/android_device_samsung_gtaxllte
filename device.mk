@@ -22,6 +22,8 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 PRODUCT_CHARACTERISTICS := tablet
 
+PRODUCT_SHIPPING_API_LEVEL := 23
+
 # Properties
 -include $(LOCAL_PATH)/system_prop.mk
 
