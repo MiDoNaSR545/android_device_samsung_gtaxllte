@@ -1,9 +1,4 @@
 on post-fs-data
-# [ SEC_SELINUX_PORTING_COMMON
-    # for audit message
-    chown system system /proc/avc_msg
-    chmod 0660 /proc/avc_msg
-# ] SEC_SELINUX_PORTING_COMMON
 
 # Storage views to support runtime permissions
     mkdir /storage 0755 root root
@@ -119,14 +114,6 @@ on post-fs-data
     chmod 0664 /dev/cpuset/surfaceflinger/cpus
     chmod 0664 /dev/cpuset/cpus
 
-    # change own for camera lagging
-    chown system system /sys/kernel/hmp/down_threshold
-    chown system system /sys/kernel/hmp/up_threshold
-
-    # set permission to 0660 for camera lagging
-    chmod 0660 /sys/kernel/hmp/down_threshold
-    chmod 0660 /sys/kernel/hmp/up_threshold
-
 # reset_reason
     chown system system /proc/reset_reason
     chmod 0600 /proc/reset_reason
@@ -173,12 +160,10 @@ on post-fs-data
     setprop persist.adb.nonblocking_ffs 0
     setprop ro.adb.nonblocking_ffs 0
 
-# [ SEC_SELINUX_PORTING_COMMON
-    # Reload SE Android Policy
+    # Reload Android Policy
     setprop selinux.reload_policy 1
     # sec_efs_file
     mkdir /efs/sec_efs 0775 radio system
-# ] SEC_SELINUX_PORTING_COMMON
 
     # h2k
     mkdir /efs/cpk 0771 radio system
@@ -221,56 +206,6 @@ on post-fs-data
 	#MST-MFC Support
     chown system system /sys/class/mstldo/mst_drv/mfc
     chmod 0770 /sys/class/mstldo/mst_drv/mfc
-
-# [ SEC_SELINUX_PORTING_COMMON
-    mkdir /data/misc/audit 0775 audit system
-
-    # start auditd
-    start auditd
-# ] SEC_SELINUX_PORTING_COMMON
-
-    # ATT CIQ
-    mkdir /data/iq_archive 0771 system system
-    mkdir /data/iq_archive/packages 0771 system system
-    mkdir /data/iq_archive/prefs 0700 system system
-
-    #create uibc dir
-    mkdir /dev/socket/uibc 0777 media system
-    chown media system /dev/socket/uibc
-    chmod 0775 /dev/socket/uibc
-
-    # VaultKeeper socket
-    mkdir /dev/socket/vaultkeeper 0770 system system
-    chown system system /dev/socket/vaultkeeper
-    chmod 0770 /dev/socket/vaultkeeper
-
-# [ SEC_MM_DRM
-    # DRM directory creation
-    mkdir /system/etc/security/.drm 0775
-    chown root root /system/etc/security/.drm
-    chmod 0775 /system/etc/security/.drm
-
-    # Added for Playready DRM Support
-    #mkdir /data/data/.drm 0775
-    #chown drm system /data/data/.drm
-    #chmod 0775 /data/data/.drm
-    #mkdir /data/data/.drm/.playready 0775
-    #chown drm system /data/data/.drm/.playready
-    #chmod 0775 /data/data/.drm/.playready
-
-    # Added for Playready DCM DRM Support
-    #mkdir /data/.dcmdrm 0775
-    #chown drm system /data/.dcmdrm
-    #chmod 0775 /data/.dcmdrm
-    #mkdir /data/.dcmdrm/.playready 0775
-    #chown drm system /data/.dcmdrm/.playready
-    #chmod 0775 /data/.dcmdrm/.playready
-
-    # Added drm folder to copy drm plugins
-    mkdir /system/lib/drm 0775
-    chown root root /system/lib/drm
-    chmod 0775 /system/lib/drm
-# ]
 
     # FIDO
     mkdir /data/.fido 0700 system system
