@@ -38,9 +38,6 @@ allow cbd radio_block_device:blk_file { read open };
 allow cbd rootfs:file { entrypoint read };
 allow cbd sysfs:file { read open write };
 
-allow cbd proc_cmdline:file { open read };
-allow cbd modemloader_prop:property_service set;
-
 allow cbd vendor_file:file entrypoint;
 
 # set properties on boot

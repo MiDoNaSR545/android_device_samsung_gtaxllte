@@ -1,3 +1,0 @@
-allow adbd debugfs_tracing_debug:file { open write };
-allow adbd sysfs:file { getattr open read };
-
