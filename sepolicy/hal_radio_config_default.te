@@ -1,2 +1,2 @@
-allow hal_radio_config_default debugfs_tracing_debug:file { open write };
+allow hal_radio_config_default adb_data_file:file { getattr open read execute };
 

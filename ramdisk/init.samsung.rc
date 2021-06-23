@@ -196,9 +196,6 @@ on post-fs-data
 
     chmod 0775 /data/misc/radio
 
-    # Samsung Pay
-    mkdir /efs/pfw_data 0760 spay spay
-
 	#MST Factory Test
     chown system system /sys/class/mstldo/mst_drv/transmit
     chmod 0770 /sys/class/mstldo/mst_drv/transmit

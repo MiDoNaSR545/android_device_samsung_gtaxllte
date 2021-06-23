@@ -58,9 +58,6 @@ on boot
 #    write /proc/sys/vm/min_free_kbytes 32768
 #    write /proc/sys/vm/min_free_order_shift 1
 
-# SSWAP
-    write /proc/sys/vm/swappiness 130
-
 #   mount debugfs /sys/kernel/debug /sys/kernel/debug
 #   setprop ro.radio.noril yes
 
@@ -214,7 +211,7 @@ on fs
 # Permissions for ION
     chmod 0660 /sys/class/ion_cma/ion_video_ext/isolated
     chown system system /sys/class/ion_cma/ion_video_ext/isolated
-
+ 
 # Permissions for backlight
     chown system system /sys/class/backlight/panel/brightness
 
@@ -449,13 +446,6 @@ on property:persist.sys.storage_preload=1
 
 on property:persist.sys.storage_preload=0
     start umount_service
-
-# SSWAP
-service sswap /vendor/bin/sswap -s
-    class core
-    user root
-    group root
-    oneshot
 
 # sem_daemon
 service sem_daemon /system/bin/sem_daemon

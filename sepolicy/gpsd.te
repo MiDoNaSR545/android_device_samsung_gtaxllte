@@ -9,8 +9,6 @@ file_type_auto_trans(gpsd, system_data_file, gps_data_file);
 unix_socket_connect(gpsd, property, netd)
 
 allow gpsd dnsproxyd_socket:sock_file write;
-allow gpsd mif_device:chr_file { read open ioctl };
-allow gpsd self:udp_socket { create bind connect read setopt write };
 allow gpsd netd:unix_stream_socket connectto;
 allow gpsd shell_exec:file { open read execute execute_no_trans getattr };
 allow gpsd fwmarkd_socket:sock_file write;

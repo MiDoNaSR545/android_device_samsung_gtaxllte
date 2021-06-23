@@ -67,10 +67,6 @@ persist.radio.apm_sim_not_pwdn=1 \
 ro.smps.enable=true \
 telephony.lteOnCdmaDevice=0
 
-# read DS/SS property
-PRODUCT_PROPERTY_OVERRIDES += \
-import /efs/factory.prop
-
 # Treble
 PRODUCT_PROPERTY_OVERRIDES += \
 persist.media.treble_omx=false

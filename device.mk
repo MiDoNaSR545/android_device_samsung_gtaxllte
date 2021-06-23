@@ -57,14 +57,6 @@ PRODUCT_PACKAGES += \
     init.wifi.rc \
     ueventd.samsungexynos7870.rc
 
-# cpboot-daemon
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/ramdisk/cbd:$(TARGET_COPY_OUT_VENDOR)/bin/cbd
-
-# sswap
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/ramdisk/sswap:$(TARGET_COPY_OUT_VENDOR)/bin/sswap
-
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.low_latency.xml \
